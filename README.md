@@ -50,20 +50,24 @@ Coordinate has a string represtantation and point to the property to be patch or
 <details> 
 <summary></summary>
 custom_mark_coordinate
-  digraph G {
-    aize ="4,4";
-    Coordinate [shape=box];
-    Coordinate -> RootCoordinate;
-    Coordinate -> RelativeCoordinate;
-    RelativeCoordinate -> Coordinate [style=dotted,label="parent"];
-    RelativeCoordinate -> ArrayCoordinate;
-    RelativeCoordinate -> ClassCoordinate;
-    RelativeCoordinate -> FieldCoordinate;
-    RelativeCoordinate -> ListCoordinate;
-    RelativeCoordinate -> MapCoordinate;
-    RelativeCoordinate -> SetCoordinate;
-    RelativeCoordinate -> SizeCoordinate;
-  }
+interface Coordinate {}
+/** @opt attributes */
+class RootCoordinate implements Coordinate {
+public String name;
+}
+/** @opt attributes */
+abstract class RelativeCoordinate implements Coordinate {
+public Coordinate parent;
+public String relativeName;
+}
+class ArrayCoordinate extends RelativeCoordinate {}
+class ClassCoordinate extends RelativeCoordinate {}
+class FieldCoordinate extends RelativeCoordinate {}
+class ListCoordinate extends RelativeCoordinate {}
+class MapCoordinate extends RelativeCoordinate {}
+class SetCoordinate extends RelativeCoordinate {}
+class SizeCoordinate extends RelativeCoordinate {}
+ 
 custom_mark_coordinate
 </details>
 
