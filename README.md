@@ -46,35 +46,41 @@ class Patch(val coordinate : Coordinate, val delta : Delta)
 
 Coordinate has a string represtantation and point to the property to be patch or modified. Ej:
 
-![Coordinate Hierarchy](https://g.gravizo.com/svg?
+![Alt text](https://g.gravizo.com/source/custom_mark_coordinate?https%3A%2F%2Fraw.githubusercontent.com%2Fsebasjm%2Fdeepdiff%2Fmaster%2FREADME.md)
+<details> 
+<summary></summary>
+custom_mark_coordinate
   digraph G {
     aize ="4,4";
-    main [shape=box];
-    main -> parse [weight=8];
-    parse -> execute;
-    main -> init [style=dotted];
-    main -> cleanup;
-    execute -> { make_string; printf}
-    init -> make_string;
-    edge [color=red];
-    main -> printf [style=bold,label="100 times"];
-    make_string [label="make a string"];
-    node [shape=box,style=filled,color=".7 .3 1.0"];
-    execute -> compare;
+    Coordinate [shape=box];
+    Coordinate -> RootCoordinate;
+    Coordinate -> RelativeCoordinate;
+    RelativeCoordinate -> ArrayCoordinate;
+    RelativeCoordinate -> ClassCoordinate;
+    RelativeCoordinate -> FieldCoordinate;
+    RelativeCoordinate -> ListCoordinate;
+    RelativeCoordinate -> MapCoordinate;
+    RelativeCoordinate -> SetCoordinate;
+    RelativeCoordinate -> SizeCoordinate;
   }
-)
+custom_mark_coordinate
+</details>
 
 Delta is the action, has 3 subtypes: DeltaAdd, DeltaMod and DeltaDel
 
-![Delta Hierarchy](https://g.gravizo.com/svg?
+![Alt text](https://g.gravizo.com/source/custom_mark_delta?https%3A%2F%2Fraw.githubusercontent.com%2Fsebasjm%2Fdeepdiff%2Fmaster%2FREADME.md)
+<details> 
+<summary></summary>
+custom_mark_delta
   digraph G {
     aize ="4,4";
     Delta [shape=box];
     Delta -> DeltaMod;
-    Delta -> DeltaAdd ;
-    Delta -> DeltaDel ;
+    Delta -> DeltaDel;
+    Delta -> DeltaAdd;
   }
-)
+custom_mark_delta
+</details>
 
 ## Running the tests
 
