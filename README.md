@@ -55,6 +55,7 @@ custom_mark_coordinate
     Coordinate [shape=box];
     Coordinate -> RootCoordinate;
     Coordinate -> RelativeCoordinate;
+    RelativeCoordinate -> Coordinate [style=dotted,label="parent"];
     RelativeCoordinate -> ArrayCoordinate;
     RelativeCoordinate -> ClassCoordinate;
     RelativeCoordinate -> FieldCoordinate;
