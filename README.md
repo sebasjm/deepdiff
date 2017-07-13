@@ -73,13 +73,27 @@ Delta is the action, has 3 subtypes: DeltaAdd, DeltaMod and DeltaDel
 <details> 
 <summary></summary>
 custom_mark_delta
-  digraph G {
-    aize ="4,4";
-    Delta [shape=box];
-    Delta -> DeltaMod;
-    Delta -> DeltaDel;
-    Delta -> DeltaAdd;
-  }
+interface Delta<Type>{}
+/**
+* @opt all
+*/
+class DeltaMod<Type> implements Delta<Type>{
+public final Type before;
+public final Type after;
+}
+/**
+* @opt all
+*/
+class DeltaAdd<Type> implements Delta<Type>{
+public final Type after;
+}
+/**
+* @opt all
+*/
+class DeltaDel<Type> implements Delta<Type>{
+public final Type before;
+}
+
 custom_mark_delta
 </details>
 
