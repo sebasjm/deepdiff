@@ -11,7 +11,6 @@ internal class ArrayEqualityStrategyTest {
 
     @Test
     fun compare() {
-        val strategy = ArrayEqualityStrategy()
         //        ArrayEqualityStrategy aes = new ArrayEqualityStrategy();
         //        aes.compare()
     }
