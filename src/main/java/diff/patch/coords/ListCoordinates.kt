@@ -17,7 +17,7 @@ class ListCoordinates<Type: Any>(internal val index: Int, parent: Coordinate<Lis
     }
 
     override fun setter(target: List<Type>): Setter<Type> {
-        return ListSetter(index, target)
+        return ListSetter(index, target as MutableList)
     }
 
     override fun relativeName(): String {

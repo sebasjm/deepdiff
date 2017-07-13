@@ -11,14 +11,14 @@ import java.util.Objects
 
  * @author sebasjm <smarchano></smarchano>@primary.com.ar>
  */
-class MapCoordinates<Key: Any, Value: Any>(internal val field: Key?, parent: Coordinate<Map<Key, Value>, Any>) : RelativeCoordinates<Value, Map<Key, Value>>(parent) {
+class MapCoordinates<Key: Any, Value: Any>(internal val field: Key, parent: Coordinate<Map<Key, Value>, Any>) : RelativeCoordinates<Value, Map<Key, Value>>(parent) {
 
     override fun getter(target: Map<Key, Value>): Getter<Value> {
         return MapGetter(target, field)
     }
 
     override fun setter(target: Map<Key, Value>): Setter<Value> {
-        return MapSetter(target, field)
+        return MapSetter(target as MutableMap, field)
     }
 
     override fun relativeName(): String {

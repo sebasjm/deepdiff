@@ -19,7 +19,7 @@ class SetCoordinates<Type: Any>(internal val element: Type, parent: Coordinate<S
     }
 
     override fun setter(target: Set<Type>): Setter<Type> {
-        return SetSetter(target, element)
+        return SetSetter(target as MutableSet, element)
     }
 
     override fun relativeName(): String {
