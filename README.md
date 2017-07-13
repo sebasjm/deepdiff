@@ -11,15 +11,36 @@ TBD
 TBD
 
 ```
-Give examples
+> git clone https://github.com/sebasjm/deepdiff
+> cd deepdiff
+> ./gradlew build
 ```
 
 ### Installing
 
-TBD
+In your project
+
 ```
-Give the example
+    compile "ar.com.sebasjm:deepdiff:0.1-SNAPSHOT"
 ```
+
+### Using it
+
+Instanciate a stateless diff
+
+```
+    val diff = Diff()
+```
+
+list differences with it
+
+```
+    val result : List<Patch<Any>> = diff.list(from, to)
+```
+
+Patch has a coordinate and a delta.
+Coordinate has a string represtantation and point to the property to be patch or modified
+Delta is the action, has 3 subtypes: DeltaAdd, DeltaMod and DeltaDel
 
 ## Running the tests
 
