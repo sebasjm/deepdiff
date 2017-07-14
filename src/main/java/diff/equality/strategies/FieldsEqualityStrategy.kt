@@ -9,7 +9,7 @@ import diff.patch.coords.FieldCoordinates
 
  * @author Sebastian Marchano sebasjm@gmail.com
  */
-class FieldsEqualityStrategy : EqualityStrategy<Any> {
+class FieldsEqualityStrategy<Type: Any> : EqualityStrategy<Type> {
 
     /**
      * Object should have same fields
@@ -19,7 +19,7 @@ class FieldsEqualityStrategy : EqualityStrategy<Any> {
      * @return
      */
 
-    override fun compare(before: Any, after: Any): EqualityStrategy.CompareResult {
+    override fun compare(before: Type, after: Type): EqualityStrategy.CompareResult {
         val fieldsBefore = before.javaClass.getDeepDeclaredFields()
         val fieldsAfter = after.javaClass.getDeepDeclaredFields()
 
@@ -35,6 +35,6 @@ class FieldsEqualityStrategy : EqualityStrategy<Any> {
         return EqualityStrategy.UndecidibleMoreToCompare(result)
     }
 
-    override fun shouldUseThisStrategy(cls: Class<Any>) = true
+    override fun shouldUseThisStrategy(cls: Class<Type>) = true
 
 }

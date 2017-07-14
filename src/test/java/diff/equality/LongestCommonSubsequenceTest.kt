@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions.*
 /**
  * Created by sebasjm on 12/07/17.
  */
-internal class LongestCommonSubsequenceTest {
+class LongestCommonSubsequenceTest {
     @BeforeEach
     fun setUp() {
     }

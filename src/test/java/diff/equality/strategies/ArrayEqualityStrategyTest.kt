@@ -9,14 +9,12 @@ import org.junit.jupiter.api.Assertions.*
  */
 internal class ArrayEqualityStrategyTest {
 
-    @Test
-    fun compare() {
+    @Test fun compare() {
         //        ArrayEqualityStrategy aes = new ArrayEqualityStrategy();
         //        aes.compare()
     }
 
-    @Test
-    fun shouldUseThisStrategy() {
+    @Test fun shouldUseThisStrategy() {
     }
 
 }

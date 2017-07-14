@@ -117,7 +117,7 @@ class Matcher(internal val stackFactory: StackFactory<Pair<Any,Any>>, internal v
             return Arrays.asList(*defaultStrategies)
         }
 
-        internal val fieldsEqualityStrategy = FieldsEqualityStrategy()
+        internal val fieldsEqualityStrategy = FieldsEqualityStrategy<Any>()
 
         private fun not(value: Boolean): Boolean {
             return !value
