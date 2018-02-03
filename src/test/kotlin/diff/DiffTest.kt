@@ -18,13 +18,7 @@ class DiffTest {
         Assertions.assertEquals(
             CustomJson.niceWriter.writeValueAsString(diff),
             """[ {
-  "coordinate" : {
-    "index" : 2,
-    "parent" : {
-      "name" : ""
-    },
-    "name" : "[2]"
-  },
+  "coordinate" : "[2]",
   "delta" : {
     "before" : 3
   }
@@ -45,17 +39,7 @@ class DiffTest {
         Assertions.assertEquals(
             CustomJson.niceWriter.writeValueAsString(diff),
             """[ {
-  "coordinate" : {
-    "field" : "pepe",
-    "parent" : {
-      "field" : "other",
-      "parent" : {
-        "name" : ""
-      },
-      "name" : ".other"
-    },
-    "name" : ".other.pepe"
-  },
+  "coordinate" : ".other.pepe",
   "delta" : {
     "before" : "1234",
     "after" : "12"
