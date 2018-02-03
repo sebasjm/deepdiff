@@ -51,9 +51,7 @@ class SizeCoordinates<Type: Any>(parent: Coordinate<Type, Any>, internal val typ
         }
     }
 
-    override fun relativeName(): String {
-        return ":size"
-    }
+    override val name = ":size"
 
     override fun getter(target: Type): Getter<Int> {
         return type.buildGetter(target)

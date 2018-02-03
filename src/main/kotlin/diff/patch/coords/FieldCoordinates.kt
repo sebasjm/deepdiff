@@ -1,6 +1,5 @@
 package diff.patch.coords
 
-import diff.Reflect
 import diff.getDeepDeclaredFields
 import diff.patch.Coordinate
 import diff.patch.Getter
@@ -19,7 +18,7 @@ class FieldCoordinates<Type: Any, Parent: Any>(internal val field: String, paren
 
     override fun getter(target: Parent): Getter<Type> {
         try {
-            return FieldGetter(target, searchFieldThroughHierarchy(field, target.javaClass))
+            return FieldGetter(target, searchFieldThroughHierarchy(this.field, target.javaClass))
         } catch (ignored: Exception) {
             ignored.printStackTrace()
         }
@@ -43,7 +42,7 @@ class FieldCoordinates<Type: Any, Parent: Any>(internal val field: String, paren
 
     override fun setter(target: Parent): Setter<Type> {
         try {
-            return FieldSetter(target, searchFieldThroughHierarchy(field, target.javaClass))
+            return FieldSetter(target, searchFieldThroughHierarchy(this.field, target.javaClass))
         } catch (ignored: Exception) {
             ignored.printStackTrace()
         }
@@ -51,12 +50,10 @@ class FieldCoordinates<Type: Any, Parent: Any>(internal val field: String, paren
 
     }
 
-    override fun relativeName(): String {
-        return "." + field
-    }
+    override val name = parent.name + ".$field"
 
     override fun applies(target: Parent): Boolean {
-        return target.javaClass.getDeepDeclaredFields().contains(field)
+        return target.javaClass.getDeepDeclaredFields().contains(this.field)
     }
 
     override fun hashCode(): Int {

@@ -21,9 +21,7 @@ class ClassCoordinates<Parent: Any>(parent: Coordinate<Parent, Any>) : RelativeC
         throw UnsupportedOperationException("Not supported.")
     }
 
-    override fun relativeName(): String {
-        return ":class"
-    }
+    override val name = ":class"
 
     override fun applies(target: Parent): Boolean {
         return true

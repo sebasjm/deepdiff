@@ -24,9 +24,7 @@ class ArrayCoordinates<ComponentType: Any, ArrayType: Any>(internal val index: I
         return ArraySetter(target, index)
     }
 
-    override fun relativeName(): String {
-        return "[$index]"
-    }
+    override val name = parent.name + "[$index]"
 
     override fun applies(target: ArrayType): Boolean {
         return target.javaClass.isArray

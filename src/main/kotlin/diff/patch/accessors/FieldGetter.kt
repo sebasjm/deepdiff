@@ -16,7 +16,7 @@ class FieldGetter<Type: Any>(internal val target: Any, internal val field: Field
 
     override fun get(): Type? {
         try {
-            return field.get(target) as Type
+            return field.get(target) as Type?
         } catch (ignored: IllegalArgumentException) {
             ignored.printStackTrace()
             return null

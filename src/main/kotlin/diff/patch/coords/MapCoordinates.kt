@@ -21,9 +21,7 @@ class MapCoordinates<Key: Any, Value: Any>(internal val field: Key, parent: Coor
         return MapSetter(target as MutableMap, field)
     }
 
-    override fun relativeName(): String {
-        return "['$field']"
-    }
+    override val name = parent.name + "[$field]"
 
     override fun applies(target: Map<Key, Value>): Boolean {
         return target.containsKey(field)

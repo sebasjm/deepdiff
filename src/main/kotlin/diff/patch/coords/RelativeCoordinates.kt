@@ -13,17 +13,11 @@ import diff.patch.Coordinate
 abstract class RelativeCoordinates<Type: Any, Parent: Any>(internal val parent: Coordinate<Parent, Any>) : Coordinate<Type, Parent> {
 
     fun parent(): Coordinate<Parent, Any> {
-        return parent
+        return this.parent
     }
-
-    override val name = parent.name + relativeName()
 
     override fun toString(): String {
         return name
     }
-
-    abstract fun relativeName(): String
-
-
 
 }

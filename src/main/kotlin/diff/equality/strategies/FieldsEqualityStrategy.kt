@@ -28,8 +28,9 @@ class FieldsEqualityStrategy<Type: Any> : EqualityStrategy<Type> {
         val result = fieldsAfter
             .filter { !fieldsBefore.contains(it) }
             .union( fieldsBefore )
-            .map {
-                { parent: Coordinate<Any,Any> -> FieldCoordinates<Any, Any>(it, parent) }
+            .map { field ->
+                { parent: Coordinate<Any,Any> -> FieldCoordinates<Any, Any>(field, parent)
+                }
             }
 
         return EqualityStrategy.UndecidibleMoreToCompare(result)

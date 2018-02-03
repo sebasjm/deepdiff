@@ -20,9 +20,7 @@ class ListCoordinates<Type: Any>(internal val index: Int, parent: Coordinate<Lis
         return ListSetter(index, target as MutableList)
     }
 
-    override fun relativeName(): String {
-        return "[$index]"
-    }
+    override val name = parent.name + "[$index]"
 
     override fun applies(target: List<Type>): Boolean {
         return index < target.size

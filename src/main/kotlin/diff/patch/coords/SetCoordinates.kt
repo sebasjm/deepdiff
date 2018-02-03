@@ -22,9 +22,7 @@ class SetCoordinates<Type: Any>(internal val element: Type, parent: Coordinate<S
         return SetSetter(target as MutableSet, element)
     }
 
-    override fun relativeName(): String {
-        return "('$element')"
-    }
+    override val name = parent.name + "($element)"
 
     override fun applies(target: Set<Type>): Boolean {
         return target.contains(element)
