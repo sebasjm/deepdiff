@@ -135,6 +135,7 @@ class Diff @JvmOverloads constructor(internal val defaultEqualityStrategies: Lis
             override fun onOneIsNull(pair: Pair<Any, Any>): Boolean {
                 result.add(Patch(
                     pair.coordinate(),
+                    pair.type()!!,
                     if (pair.before() == null) DeltaAdd(pair.after()) else DeltaDel(pair.before())
                 ))
                 return false
@@ -143,6 +144,7 @@ class Diff @JvmOverloads constructor(internal val defaultEqualityStrategies: Lis
             override fun onNotSameClass(pair: Pair<Any, Any>): Boolean {
                 result.add(Patch(
                     ClassCoordinates(pair.coordinate()),
+                    pair.type()!!,
                     DeltaMod(pair.before(), pair.after())
                 ))
                 return false
@@ -151,6 +153,7 @@ class Diff @JvmOverloads constructor(internal val defaultEqualityStrategies: Lis
             override fun onDifference(pair: Pair<Any, Any>): Boolean {
                 result.add(Patch(
                     pair.coordinate(),
+                    pair.type()!!,
                     DeltaMod(pair.before(), pair.after())
                 ))
                 return false

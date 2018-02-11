@@ -19,6 +19,7 @@ class DiffTest {
             CustomJson.niceWriter.writeValueAsString(diff),
             """[ {
   "coordinate" : "[2]",
+  "type" : "java.lang.Integer",
   "delta" : {
     "before" : 3
   }
@@ -40,6 +41,7 @@ class DiffTest {
             CustomJson.niceWriter.writeValueAsString(diff),
             """[ {
   "coordinate" : ".other.pepe",
+  "type" : "java.lang.String",
   "delta" : {
     "before" : "1234",
     "after" : "12"

@@ -7,7 +7,8 @@ package diff.patch
  * @param <Type>
 </Type> */
 class Patch<Type>(
-        val coordinate: Coordinate<*, *> , //what changed
+        val coordinate: Coordinate<*, *> , //where changed
+        val type: Class<*>, //what changed
         val delta: Delta<*> //how changed
     ) {
 

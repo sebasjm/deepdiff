@@ -1,5 +1,5 @@
 group 'ar.com.sebasjm'
-version '0.1.2'
+version '0.1.2.1'
 
 buildscript {
     ext.kotlin_version = '1.2.0'
