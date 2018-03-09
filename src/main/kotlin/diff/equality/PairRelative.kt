@@ -20,8 +20,8 @@ class PairRelative<Type: Any, Parent: Any>(val parent: Pair<Parent, Any>, privat
 
     init {
         assert(this.coordinate != null) { "coordinates cant be null" }
-        this.beforeGetter = this.coordinate.getter(before)
-        this.afterGetter = this.coordinate.getter(after)
+        this.beforeGetter = this.coordinate.getter(true, before)
+        this.afterGetter = this.coordinate.getter(false, after)
         this.type = afterGetter.get()?.javaClass ?: beforeGetter.get()?.javaClass
     }
 

@@ -13,17 +13,17 @@ import diff.patch.accessors.ClassGetter
 </Parent> */
 class ClassCoordinates<Parent: Any>(parent: Coordinate<Parent, Any>) : RelativeCoordinates<Class<Any>, Parent>(parent) {
 
-    override fun getter(target: Parent): Getter<Class<Any>> {
+    override fun getter(ofOldState: Boolean, target: Parent): Getter<Class<Any>> {
         return ClassGetter(target.javaClass)
     }
 
-    override fun setter(target: Parent): Setter<Class<Any>> {
+    override fun setter(ofOldState: Boolean, target: Parent): Setter<Class<Any>> {
         throw UnsupportedOperationException("Not supported.")
     }
 
     override val name = parent.name +":class"
 
-    override fun applies(target: Parent): Boolean {
+    override fun applies(isOldState: Boolean, target: Parent): Boolean {
         return true
     }
 

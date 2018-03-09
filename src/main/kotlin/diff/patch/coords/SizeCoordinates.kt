@@ -53,15 +53,15 @@ class SizeCoordinates<Type: Any>(parent: Coordinate<Type, Any>, internal val typ
 
     override val name = parent.name + ":size"
 
-    override fun getter(target: Type): Getter<Int> {
+    override fun getter(ofOldState: Boolean, target: Type): Getter<Int> {
         return type.buildGetter(target)
     }
 
-    override fun setter(target: Type): Setter<Int> {
+    override fun setter(ofOldState: Boolean, target: Type): Setter<Int> {
         throw UnsupportedOperationException("Not supported.")
     }
 
-    override fun applies(target: Type): Boolean {
+    override fun applies(isOldState: Boolean, target: Type): Boolean {
         return true
     }
 

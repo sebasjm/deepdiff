@@ -10,17 +10,17 @@ import diff.patch.Setter
 class RootCoordinate<Type: Any> : Coordinate<Type, Any> {
     override val name = ""
 
-    override fun getter(target: Any): Getter<Type> {
+    override fun getter(ofOldState: Boolean, target: Any): Getter<Type> {
         return object : Getter<Type> {
             override fun get(): Type? = target as Type?
         }
     }
 
-    override fun setter(target: Any): Setter<Type> {
+    override fun setter(ofOldState: Boolean, target: Any): Setter<Type> {
         return object :Setter<Type> {
             override fun set(value: Type): Unit = throw RuntimeException("root object cannot be modified")
         }
     }
 
-    override fun applies(target: Any) = true
+    override fun applies(isOldState: Boolean, target: Any) = true
 }

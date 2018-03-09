@@ -13,17 +13,17 @@ import java.util.Objects
  */
 class MapCoordinates<Key: Any, Value: Any>(internal val field: Key, parent: Coordinate<Map<Key, Value>, Any>) : RelativeCoordinates<Value, Map<Key, Value>>(parent) {
 
-    override fun getter(target: Map<Key, Value>): Getter<Value> {
+    override fun getter(ofOldState: Boolean, target: Map<Key, Value>): Getter<Value> {
         return MapGetter(target, field)
     }
 
-    override fun setter(target: Map<Key, Value>): Setter<Value> {
+    override fun setter(ofOldState: Boolean, target: Map<Key, Value>): Setter<Value> {
         return MapSetter(target as MutableMap, field)
     }
 
     override val name = parent.name + "[$field]"
 
-    override fun applies(target: Map<Key, Value>): Boolean {
+    override fun applies(isOldState: Boolean, target: Map<Key, Value>): Boolean {
         return target.containsKey(field)
     }
 

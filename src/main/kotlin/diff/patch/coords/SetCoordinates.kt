@@ -14,17 +14,17 @@ import java.util.Objects
  */
 class SetCoordinates<Type: Any>(internal val element: Type, parent: Coordinate<Set<Type>, Any>) : RelativeCoordinates<Type, Set<Type>>(parent) {
 
-    override fun getter(target: Set<Type>): Getter<Type> {
+    override fun getter(ofOldState: Boolean, target: Set<Type>): Getter<Type> {
         return SetGetter(target, element)
     }
 
-    override fun setter(target: Set<Type>): Setter<Type> {
+    override fun setter(ofOldState: Boolean, target: Set<Type>): Setter<Type> {
         return SetSetter(target as MutableSet, element)
     }
 
     override val name = parent.name + "($element)"
 
-    override fun applies(target: Set<Type>): Boolean {
+    override fun applies(isOldState: Boolean, target: Set<Type>): Boolean {
         return target.contains(element)
     }
 

@@ -17,8 +17,8 @@ class PairAbsolute<Type: Any>(private val before: Type?, private val after: Type
     private val coordinate = RootCoordinate<Type>()
 
     init {
-        this.beforeGetter = if (before == null) Getter.nullObject as Getter<Type> else this.coordinate.getter(before)
-        this.afterGetter  = if (after  == null) Getter.nullObject as Getter<Type> else this.coordinate.getter(after)
+        this.beforeGetter = if (before == null) Getter.nullObject as Getter<Type> else this.coordinate.getter(true, before)
+        this.afterGetter  = if (after  == null) Getter.nullObject as Getter<Type> else this.coordinate.getter(false, after)
         this.type = afterGetter.get()?.javaClass ?: beforeGetter.get()?.javaClass
     }
 

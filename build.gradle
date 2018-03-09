@@ -10,7 +10,8 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.3'
+//        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.3'
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M4'
     }
 }
 
@@ -19,6 +20,19 @@ apply plugin: 'kotlin'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'org.junit.platform.gradle.plugin'
+
+junitPlatform {
+    filters {
+        engines {
+            include 'spek'
+        }
+    }
+}
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
 
 publishing {
     repositories {
@@ -59,6 +73,10 @@ dependencies {
     compile "com.fasterxml.jackson.module:jackson-module-parameter-names:$jackson_version"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_version"
 
-    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.3"
-    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.3"
+//    testCompile "org.junit.jupiter:junit-jupiter-api:5.0.3"
+//    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.0.3"
+    testCompile 'org.jetbrains.spek:spek-api:1.1.2'
+    testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.2'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.0.0-M4'
+    testCompile 'org.junit.platform:junit-platform-runner:1.0.0-M4'
 }

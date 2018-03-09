@@ -16,17 +16,17 @@ import diff.patch.accessors.ArraySetter
 </ArrayType></ComponentType> */
 class ArrayCoordinates<ComponentType: Any, ArrayType: Any>(internal val index: Int, parent: Coordinate<ArrayType, Any>) : RelativeCoordinates<ComponentType, ArrayType>(parent) {
 
-    override fun getter(target: ArrayType): Getter<ComponentType> {
+    override fun getter(ofOldState: Boolean, target: ArrayType): Getter<ComponentType> {
         return ArrayGetter(target, index)
     }
 
-    override fun setter(target: ArrayType): Setter<ComponentType> {
+    override fun setter(ofOldState: Boolean, target: ArrayType): Setter<ComponentType> {
         return ArraySetter(target, index)
     }
 
     override val name = parent.name + "[$index]"
 
-    override fun applies(target: ArrayType): Boolean {
+    override fun applies(isOldState: Boolean, target: ArrayType): Boolean {
         return target.javaClass.isArray
     }
 

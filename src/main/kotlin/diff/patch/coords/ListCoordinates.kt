@@ -12,17 +12,17 @@ import diff.patch.accessors.ListSetter
  */
 class ListCoordinates<Type: Any>(internal val index: Int, parent: Coordinate<List<Type>, Any>) : RelativeCoordinates<Type, List<Type>>(parent) {
 
-    override fun getter(target: List<Type>): Getter<Type> {
+    override fun getter(ofOldState: Boolean, target: List<Type>): Getter<Type> {
         return ListGetter(index, target)
     }
 
-    override fun setter(target: List<Type>): Setter<Type> {
+    override fun setter(ofOldState: Boolean, target: List<Type>): Setter<Type> {
         return ListSetter(index, target as MutableList)
     }
 
     override val name = parent.name + "[$index]"
 
-    override fun applies(target: List<Type>): Boolean {
+    override fun applies(isOldState: Boolean, target: List<Type>): Boolean {
         return index < target.size
     }
 

@@ -59,8 +59,8 @@ class Diff @JvmOverloads constructor(internal val defaultEqualityStrategies: Lis
             if (next != null) return next
 
             val thiz = CompareTree(
-                coord.getter(parentByCoord.before!!).get(),
-                coord.getter(parentByCoord.after!!).get(),
+                coord.getter(true, parentByCoord.before!!).get(),
+                coord.getter(false, parentByCoord.after!!).get(),
                 parentByCoord,
                 coord
             )

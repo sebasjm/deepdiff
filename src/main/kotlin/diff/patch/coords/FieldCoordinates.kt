@@ -16,7 +16,7 @@ import java.util.Objects
  */
 class FieldCoordinates<Type: Any, Parent: Any>(internal val field: String, parent: Coordinate<Parent, Any>) : RelativeCoordinates<Type, Parent>(parent) {
 
-    override fun getter(target: Parent): Getter<Type> {
+    override fun getter(ofOldState: Boolean, target: Parent): Getter<Type> {
         try {
             return FieldGetter(target, searchFieldThroughHierarchy(this.field, target.javaClass))
         } catch (ignored: Exception) {
@@ -40,7 +40,7 @@ class FieldCoordinates<Type: Any, Parent: Any>(internal val field: String, paren
 
     }
 
-    override fun setter(target: Parent): Setter<Type> {
+    override fun setter(ofOldState: Boolean, target: Parent): Setter<Type> {
         try {
             return FieldSetter(target, searchFieldThroughHierarchy(this.field, target.javaClass))
         } catch (ignored: Exception) {
@@ -52,7 +52,7 @@ class FieldCoordinates<Type: Any, Parent: Any>(internal val field: String, paren
 
     override val name = parent.name + ".$field"
 
-    override fun applies(target: Parent): Boolean {
+    override fun applies(isOldState: Boolean, target: Parent): Boolean {
         return target.javaClass.getDeepDeclaredFields().contains(this.field)
     }
 
